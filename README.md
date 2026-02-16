@@ -1,131 +1,117 @@
-🧩 Microservices Architecture — Customer & Product
+# 🧩 Microservices Architecture — Customer & Product
 
-Este projeto demonstra uma arquitetura completa de microsserviços, utilizando Java 17 + Spring Boot 3, PostgreSQL, Docker, Swagger/OpenAPI e práticas modernas de desenvolvimento backend.
+This project demonstrates a complete **microservices architecture** using **Java 17**, **Spring Boot 3**, **PostgreSQL**, **Docker**, **Swagger/OpenAPI**, and modern backend development best practices.
 
-A aplicação é composta por dois serviços independentes, cada um com seu próprio banco de dados:
+The application is composed of **two independent services**, each one with its **own database**, deployed and managed separately.
 
-🧍 Customer Service — Gestão de clientes
+## 🧍 Customer Service
+Responsible for **customer management**.
 
-📦 Product Service — Gestão de produtos
+## 📦 Product Service
+Responsible for **product management**.
 
-Cada serviço é isolado, escalável e versionável de forma independente.
+Each service is **isolated, scalable, and independently versioned**.
 
-🚀 Tecnologias Utilizadas
+---
 
-Back-end
+## 🚀 Technologies Used
 
-Java 17
+### Back-end
+- Java 17  
+- Spring Boot 3.x  
+- Spring Web  
+- Spring Data JPA  
+- Spring Validation  
+- Swagger / OpenAPI 3  
+- Lombok  
 
-Spring Boot 3.x
+### Database & Infrastructure
+- PostgreSQL  
+- Docker & Docker Compose  
+- pgAdmin 4  
 
-Spring Web
+---
 
-Spring Data JPA
+## 🏛️ Architecture
 
-Spring Validation
 
-Swagger / OpenAPI 3
++----------------------+
+| Customer Service |
+| Port: 8081 |
++---------+------------+
+|
+v
++----------------------+
+| PostgreSQL |
+| DB: clientedb |
++----------------------+
 
-Lombok
++----------------------+
+| Product Service |
+| Port: 8082 |
++---------+------------+
+|
+v
++----------------------+
+| PostgreSQL |
+| DB: produtodb |
++----------------------+
 
-Banco & Infra
 
-PostgreSQL
+Each microservice has:
+- ✔ Its own database  
+- ✔ Its own container  
+- ✔ Its own routes and API documentation  
 
-Docker & Docker Compose
+---
 
-pgAdmin 4
+## 📦 How to Run the Project
 
-🏛️ Arquitetura
+### 1️⃣ Prerequisites
+- Docker installed  
+- Docker Compose  
+- Git  
+- (Optional) Maven, if you want to run services outside Docker  
 
-                +----------------------+
-                |   Customer Service   |
-                |   Port: 8081         |
-                +---------+------------+
-                          |
-                          v
-                +----------------------+
-                |   PostgreSQL         |
-                |   DB: clientedb      |
-                +----------------------+
+---
 
-                +----------------------+
-                |   Product Service    |
-                |   Port: 8082         |
-                +---------+------------+
-                          |
-                          v
-                +----------------------+
-                |   PostgreSQL         |
-                |   DB: produtodb      |
-                +----------------------+
-Cada microsserviço possui:
-✔ Seu próprio banco
-✔ Seu próprio container
-✔ Suas próprias rotas e documentação
-
-📦 Como Executar o Projeto
-
-1️⃣ Pré-requisitos
-
-Docker instalado
-
-Docker Compose
-
-Git
-
-(Opcional) Maven, caso queira rodar fora do Docker
-
-2️⃣ Clonar o repositório
-
+### 2️⃣ Clone the repository
+```bash
 git clone https://github.com/your-username/microservices.git
 cd microservices
-
-3️⃣ Subir tudo com Docker 🐳
-
+3️⃣ Start everything with Docker 🐳
 docker compose build
 docker compose up -d
-
-4️⃣ Verificar containers ativos
-
+4️⃣ Check running containers
 docker ps
+Service	Port
+customer-service	8081
+product-service	8082
+postgres-clientes	5433
+postgres-produtos	5434
+pgadmin	5050
+📚 API Documentation (Swagger)
+Service	URL
+Customer	http://localhost:8081/swagger-ui.html
 
-| Serviço           | Porta |
-| ----------------- | ----- |
-| customer-service  | 8081  |
-| product-service   | 8082  |
-| postgres-clientes | 5433  |
-| postgres-produtos | 5434  |
-| pgadmin           | 5050  |
-
-📚 Documentação das APIs (Swagger)
-
-| Serviço      | URL                                                                            |
-| ------------ | ------------------------------------------------------------------------------ |
-| **Customer** | [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html) |
-| **Product**  | [http://localhost:8082/swagger-ui.html](http://localhost:8082/swagger-ui.html) |
-
-🧪 Exemplos de Requisições (cURL)
-
+Product	http://localhost:8082/swagger-ui.html
+🧪 Request Examples (cURL)
+📄 Create Customer
 curl -X POST http://localhost:8081/customers \
 -H "Content-Type: application/json" \
 -d '{"name":"Maria Silva","email":"maria@email.com","phone":"11999999999"}'
-
-
-📄 Listar Produtos
-
+📄 List Products
 curl http://localhost:8082/products
-
-
-🗂️ Acessar banco pelo pgAdmin
+🗂️ Access Databases via pgAdmin
 
 📌 URL: http://localhost:5050
+
 📌 Login: admin@admin.com
-📌 Senha: admin
 
-Depois registre os servidores:
+📌 Password: admin
 
-🔹 Customer DB
+Register the servers:
+🔹 Customer Database
 
 Host: postgres-clientes
 
@@ -137,7 +123,7 @@ Password: senha
 
 Database: clientedb
 
-🔹 Product DB
+🔹 Product Database
 
 Host: postgres-produtos
 
@@ -149,17 +135,6 @@ Password: senha
 
 Database: produtodb
 
-🛠️ Roadmap de Evolução
+✅ Summary
 
-Paginação e filtros avançados
-Testes automatizados com Testcontainers
-Healthchecks no docker-compose.yml
-CI/CD com GitHub Actions
-Deploy em cloud (AWS, Render, Railway etc.)
-Service Discovery + API Gateway (Eureka/Cloud Gateway).
-
-Status do Projeto
-
-📌 Em desenvolvimento ativo
-📌 Arquitetura escalável, ideal para vagas de backend e sistemas distribuídos
-
+This project showcases a clean and scalable microservices architecture, emphasizing service isolation, independent databases, containerization, and clear API documentation using Swagger/OpenAPI.
