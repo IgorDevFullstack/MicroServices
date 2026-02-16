@@ -1,22 +1,26 @@
 # 🧩 Microservices Architecture — Customer & Product
 
-This project demonstrates a complete **microservices architecture** using **Java 17**, **Spring Boot 3**, **PostgreSQL**, **Docker**, **Swagger/OpenAPI**, and modern backend development best practices.
-
-The application is composed of **two independent services**, each one with its **own database**, deployed and managed separately.
-
-## 🧍 Customer Service
-Responsible for **customer management**.
-
-## 📦 Product Service
-Responsible for **product management**.
-
-Each service is **isolated, scalable, and independently versioned**.
+A modern **microservices-based backend architecture** built with **Java 17** and **Spring Boot 3**, designed to demonstrate service isolation, scalability, and clean API design using **Docker**, **PostgreSQL**, and **Swagger/OpenAPI**.
 
 ---
 
-## 🚀 Technologies Used
+## 📌 Overview
 
-### Back-end
+This project consists of **two independent microservices**, each with its **own database**, **own container**, and **independent lifecycle**.
+
+### 🧍 Customer Service
+Responsible for **customer management**.
+
+### 📦 Product Service
+Responsible for **product management**.
+
+Each service can be **scaled, deployed, and versioned independently**, following microservices best practices.
+
+---
+
+## 🚀 Tech Stack
+
+### 🖥️ Back-end
 - Java 17  
 - Spring Boot 3.x  
 - Spring Web  
@@ -25,14 +29,14 @@ Each service is **isolated, scalable, and independently versioned**.
 - Swagger / OpenAPI 3  
 - Lombok  
 
-### Database & Infrastructure
+### 🗄️ Database & Infrastructure
 - PostgreSQL  
 - Docker & Docker Compose  
 - pgAdmin 4  
 
 ---
 
-## 🏛️ Architecture
+## 🏛️ Architecture Diagram
 
 
 +----------------------+
@@ -58,31 +62,30 @@ v
 +----------------------+
 
 
-Each microservice has:
-- ✔ Its own database  
-- ✔ Its own container  
-- ✔ Its own routes and API documentation  
+✔ Each microservice has its own database  
+✔ Each microservice runs in its own container  
+✔ Each microservice exposes its own API and documentation  
 
 ---
 
-## 📦 How to Run the Project
+## 📦 Running the Project
 
 ### 1️⃣ Prerequisites
-- Docker installed  
+- Docker  
 - Docker Compose  
 - Git  
-- (Optional) Maven, if you want to run services outside Docker  
+- *(Optional)* Maven (to run services outside Docker)
 
 ---
 
-### 2️⃣ Clone the repository
+### 2️⃣ Clone the Repository
 ```bash
 git clone https://github.com/your-username/microservices.git
 cd microservices
-3️⃣ Start everything with Docker 🐳
+3️⃣ Start the Services with Docker 🐳
 docker compose build
 docker compose up -d
-4️⃣ Check running containers
+4️⃣ Verify Running Containers
 docker ps
 Service	Port
 customer-service	8081
@@ -95,22 +98,22 @@ Service	URL
 Customer	http://localhost:8081/swagger-ui.html
 
 Product	http://localhost:8082/swagger-ui.html
-🧪 Request Examples (cURL)
-📄 Create Customer
+🧪 API Request Examples
+➕ Create Customer
 curl -X POST http://localhost:8081/customers \
 -H "Content-Type: application/json" \
 -d '{"name":"Maria Silva","email":"maria@email.com","phone":"11999999999"}'
 📄 List Products
 curl http://localhost:8082/products
-🗂️ Access Databases via pgAdmin
+🗂️ Database Access (pgAdmin)
 
-📌 URL: http://localhost:5050
+🌐 URL: http://localhost:5050
 
-📌 Login: admin@admin.com
+👤 Login: admin@admin.com
 
-📌 Password: admin
+🔑 Password: admin
 
-Register the servers:
+Register Databases
 🔹 Customer Database
 
 Host: postgres-clientes
@@ -135,6 +138,18 @@ Password: senha
 
 Database: produtodb
 
-✅ Summary
+✅ Project Highlights
 
-This project showcases a clean and scalable microservices architecture, emphasizing service isolation, independent databases, containerization, and clear API documentation using Swagger/OpenAPI.
+Clean microservices architecture
+
+Independent databases per service
+
+Containerized infrastructure
+
+Production-ready API documentation
+
+Scalable and maintainable design
+
+📜 License
+
+This project is open for learning, experimentation, and improvements.
