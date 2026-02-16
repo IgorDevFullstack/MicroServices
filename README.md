@@ -1,120 +1,94 @@
-# 🧩 Microservices Architecture — Customer & Product
+# Microservices Architecture — Customer & Product
 
-A modern **microservices-based backend architecture** built with **Java 17** and **Spring Boot 3**, designed to demonstrate service isolation, scalability, and clean API design using **Docker**, **PostgreSQL**, and **Swagger/OpenAPI**.
+This project demonstrates a microservices-based backend architecture built with Java 17 and Spring Boot 3, focusing on service isolation, scalability, and clean API design using Docker, PostgreSQL, and Swagger/OpenAPI.
 
----
+## Overview
 
-## 📌 Overview
+The application is composed of two independent microservices, each one with its own database and container, allowing independent deployment, scaling, and versioning.
 
-This project consists of **two independent microservices**, each with its **own database**, **own container**, and **independent lifecycle**.
+- Customer Service: responsible for customer management
+- Product Service: responsible for product management
 
-### 🧍 Customer Service
-Responsible for **customer management**.
+## Technologies
 
-### 📦 Product Service
-Responsible for **product management**.
+Backend:
+- Java 17
+- Spring Boot 3.x
+- Spring Web
+- Spring Data JPA
+- Spring Validation
+- Swagger / OpenAPI 3
+- Lombok
 
-Each service can be **scaled, deployed, and versioned independently**, following microservices best practices.
+Database & Infrastructure:
+- PostgreSQL
+- Docker
+- Docker Compose
+- pgAdmin 4
 
----
-
-## 🚀 Tech Stack
-
-### 🖥️ Back-end
-- Java 17  
-- Spring Boot 3.x  
-- Spring Web  
-- Spring Data JPA  
-- Spring Validation  
-- Swagger / OpenAPI 3  
-- Lombok  
-
-### 🗄️ Database & Infrastructure
-- PostgreSQL  
-- Docker & Docker Compose  
-- pgAdmin 4  
-
----
-
-## 🏛️ Architecture Diagram
+## Architecture
 
 
-+----------------------+
-| Customer Service |
-| Port: 8081 |
-+---------+------------+
-|
-v
-+----------------------+
-| PostgreSQL |
-| DB: clientedb |
-+----------------------+
+Customer Service (8081)
+└── PostgreSQL (clientedb)
 
-+----------------------+
-| Product Service |
-| Port: 8082 |
-+---------+------------+
-|
-v
-+----------------------+
-| PostgreSQL |
-| DB: produtodb |
-+----------------------+
+Product Service (8082)
+└── PostgreSQL (produtodb)
 
 
-✔ Each microservice has its own database  
-✔ Each microservice runs in its own container  
-✔ Each microservice exposes its own API and documentation  
+Each microservice:
+- Has its own database
+- Runs in its own container
+- Exposes its own REST API and Swagger documentation
 
----
+## Running the Project
 
-## 📦 Running the Project
+### Prerequisites
+- Docker
+- Docker Compose
+- Git
+- (Optional) Maven
 
-### 1️⃣ Prerequisites
-- Docker  
-- Docker Compose  
-- Git  
-- *(Optional)* Maven (to run services outside Docker)
-
----
-
-### 2️⃣ Clone the Repository
+### Clone the repository
 ```bash
 git clone https://github.com/your-username/microservices.git
 cd microservices
-3️⃣ Start the Services with Docker 🐳
+Build and start containers
 docker compose build
 docker compose up -d
-4️⃣ Verify Running Containers
-docker ps
+Running containers
 Service	Port
 customer-service	8081
 product-service	8082
 postgres-clientes	5433
 postgres-produtos	5434
 pgadmin	5050
-📚 API Documentation (Swagger)
-Service	URL
-Customer	http://localhost:8081/swagger-ui.html
+API Documentation
 
-Product	http://localhost:8082/swagger-ui.html
-🧪 API Request Examples
-➕ Create Customer
+Customer Service: http://localhost:8081/swagger-ui.html
+
+Product Service: http://localhost:8082/swagger-ui.html
+
+API Examples
+
+Create a customer:
+
 curl -X POST http://localhost:8081/customers \
 -H "Content-Type: application/json" \
 -d '{"name":"Maria Silva","email":"maria@email.com","phone":"11999999999"}'
-📄 List Products
+
+List products:
+
 curl http://localhost:8082/products
-🗂️ Database Access (pgAdmin)
+Database Access (pgAdmin)
 
-🌐 URL: http://localhost:5050
+URL: http://localhost:5050
 
-👤 Login: admin@admin.com
+Login: admin@admin.com
 
-🔑 Password: admin
+Password: admin
 
-Register Databases
-🔹 Customer Database
+Customer database:
 
 Host: postgres-clientes
 
@@ -126,7 +100,7 @@ Password: senha
 
 Database: clientedb
 
-🔹 Product Database
+Product database:
 
 Host: postgres-produtos
 
@@ -138,18 +112,6 @@ Password: senha
 
 Database: produtodb
 
-✅ Project Highlights
-
-Clean microservices architecture
-
-Independent databases per service
-
-Containerized infrastructure
-
-Production-ready API documentation
-
-Scalable and maintainable design
-
-📜 License
+License
 
 This project is open for learning, experimentation, and improvements.
